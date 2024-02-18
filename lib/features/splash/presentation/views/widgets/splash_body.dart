@@ -1,5 +1,8 @@
+import 'package:bukki/core/constants/constants.dart';
+import 'package:bukki/features/home/presentation/views/home_screen.dart';
 import 'package:bukki/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -17,6 +20,7 @@ class _SplashBodyState extends State<SplashBody>
   void initState() {
     super.initState();
     initSlidingAnimation();
+    navigateToHome();
   }
 
   @override
@@ -41,5 +45,12 @@ class _SplashBodyState extends State<SplashBody>
         Tween<Offset>(begin: const Offset(0, 1), end: Offset.zero)
             .animate(animationController);
     animationController.forward();
+  }
+
+  void navigateToHome() {
+    Future.delayed(
+        const Duration(seconds: 2),
+        () => Get.to(() => const HomeScreen(),
+            transition: Transition.fade, duration: kTransitionDuration));
   }
 }
