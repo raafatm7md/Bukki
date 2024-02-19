@@ -11,7 +11,7 @@ class ListViewBuilder extends StatelessWidget {
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8.0),
+          padding: EdgeInsetsDirectional.only(end: 10.0),
           child: BooksBanner(),
         ),
       ),

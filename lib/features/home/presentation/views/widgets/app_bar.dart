@@ -1,3 +1,4 @@
+import 'package:bukki/core/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -7,11 +8,11 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsetsDirectional.only(
-          start: 24.0, top: 45.0, end: 20.0, bottom: 15.0),
+          start: 10.0, top: 45.0, end: 5.0, bottom: 15.0),
       child: Row(children: [
         const Text(
           'Bukki',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28.0),
+          style: Styles.appBarLogo,
         ),
         const Spacer(),
         IconButton(

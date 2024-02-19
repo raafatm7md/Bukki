@@ -1,3 +1,4 @@
+import 'package:bukki/core/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class SlidingText extends StatelessWidget {
@@ -12,7 +13,7 @@ class SlidingText extends StatelessWidget {
           position: slidingAnimation,
           child: const Text(
             'Bukki',
-            style: TextStyle(fontSize: 42.0, fontWeight: FontWeight.bold),
+            style: Styles.logo,
             textAlign: TextAlign.center,
           ),
         );
