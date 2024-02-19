@@ -1,6 +1,4 @@
-import 'package:bukki/core/constants/constants.dart';
 import 'package:bukki/core/router/app_router.dart';
-import 'package:bukki/features/home/presentation/views/home_screen.dart';
 import 'package:bukki/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
