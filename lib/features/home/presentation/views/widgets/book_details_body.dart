@@ -1,6 +1,7 @@
 import 'package:bukki/core/constants/styles.dart';
 import 'package:bukki/features/home/presentation/views/widgets/best_seller_item.dart';
 import 'package:bukki/features/home/presentation/views/widgets/book_app_bar.dart';
+import 'package:bukki/features/home/presentation/views/widgets/books_action.dart';
 import 'package:bukki/features/home/presentation/views/widgets/books_banner.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,8 @@ class BookDetailsBody extends StatelessWidget {
           ),
           const SizedBox(height: 10.0),
           const BookRating(),
+          const SizedBox(height: 25.0),
+          const BooksAction(),
         ],
       ),
     );
