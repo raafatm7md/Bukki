@@ -1,8 +1,9 @@
 import 'package:bukki/core/constants/constants.dart';
+import 'package:bukki/core/router/app_router.dart';
 import 'package:bukki/features/home/presentation/views/home_screen.dart';
 import 'package:bukki/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -48,9 +49,7 @@ class _SplashBodyState extends State<SplashBody>
   }
 
   void navigateToHome() {
-    Future.delayed(
-        const Duration(seconds: 2),
-        () => Get.to(() => const HomeScreen(),
-            transition: Transition.fade, duration: kTransitionDuration));
+    Future.delayed(const Duration(seconds: 2),
+        () => GoRouter.of(context).push(AppRouter.kHomePath));
   }
 }
