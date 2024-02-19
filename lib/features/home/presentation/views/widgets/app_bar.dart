@@ -10,9 +10,9 @@ class CustomAppBar extends StatelessWidget {
       padding: const EdgeInsetsDirectional.only(
           start: 10.0, top: 45.0, end: 5.0, bottom: 15.0),
       child: Row(children: [
-        const Text(
+        Text(
           'Bukki',
-          style: Styles.appBarLogo,
+          style: Styles.logo.copyWith(fontSize: 28.0),
         ),
         const Spacer(),
         IconButton(
