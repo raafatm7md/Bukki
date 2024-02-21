@@ -1,18 +1,21 @@
+import 'package:bukki/core/utils/functions/launch_url.dart';
 import 'package:bukki/core/widgets/custom_button.dart';
+import 'package:bukki/features/home/data/models/book_model.dart';
 import 'package:flutter/material.dart';
 
 class BooksAction extends StatelessWidget {
-  const BooksAction({super.key});
+  final BookModel book;
+  const BooksAction({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
               child: CustomButton(
-            text: '19.99 \$',
+            text: 'Free',
             bgColor: Colors.white,
             textColor: Colors.black,
             borderRadius: BorderRadius.only(
@@ -21,10 +24,13 @@ class BooksAction extends StatelessWidget {
           )),
           Expanded(
               child: CustomButton(
-            text: 'Free Preview',
-            bgColor: Color(0xFFEF8262),
+            onPressed: () {
+              launchCustomUrl(context, book.volumeInfo!.previewLink!);
+            },
+            text: getText(book),
+            bgColor: const Color(0xFFEF8262),
             textColor: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(14.0),
                 bottomRight: Radius.circular(14.0)),
           )),
@@ -32,4 +38,9 @@ class BooksAction extends StatelessWidget {
       ),
     );
   }
+}
+
+String getText(BookModel book) {
+  if (book.volumeInfo?.previewLink == null) return 'Not Available';
+  return 'Preview';
 }
