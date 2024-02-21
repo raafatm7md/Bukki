@@ -21,9 +21,11 @@ class Bukki extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => BooksBannerCubit(getIt.get<HomeRepoImpl>())),
+            create: (context) => BooksBannerCubit(getIt.get<HomeRepoImpl>())
+              ..fetchFeaturedBooks()),
         BlocProvider(
-            create: (context) => BestSellerBooksCubit(getIt.get<HomeRepoImpl>())),
+            create: (context) => BestSellerBooksCubit(getIt.get<HomeRepoImpl>())
+              ..fetchBestSellerBooks()),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,

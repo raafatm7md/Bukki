@@ -20,7 +20,7 @@ class BookDetailsBody extends StatelessWidget {
             const BookAppBar(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width * 0.2),
-              child: const BooksBanner(),
+              child: const BooksBanner(imgUrl: 'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
             ),
             const SizedBox(height: 25.0),
             Text(
