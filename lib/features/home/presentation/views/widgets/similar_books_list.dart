@@ -17,12 +17,14 @@ class SimilarBooksListView extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => const Padding(
-                    padding: EdgeInsetsDirectional.only(end: 10.0),
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsetsDirectional.only(end: 10.0),
                     child: BooksBanner(
-                        imgUrl:
-                            'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
+                        imgUrl: state.books[index].volumeInfo?.imageLinks
+                                ?.thumbnail ??
+                            ''),
                   ),
+                  itemCount: state.books.length,
                 ),
               )
             : state is SimilarBooksFailure
