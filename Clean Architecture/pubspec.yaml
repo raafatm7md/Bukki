@@ -21,12 +21,17 @@ dependencies:
   get_it: ^7.6.7
   cached_network_image: ^3.3.1
   url_launcher: ^6.2.5
+  hive:
+  hive_flutter:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+  hive_generator:
+  build_runner:
 
 flutter:
 
