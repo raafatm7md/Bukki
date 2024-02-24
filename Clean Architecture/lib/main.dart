@@ -1,16 +1,19 @@
 import 'package:bukki/core/constants/constants.dart';
 import 'package:bukki/core/router/app_router.dart';
 import 'package:bukki/core/utils/service_locator.dart';
-import 'package:bukki/features/home/data/repos/home_repo_impl.dart';
+import 'package:bukki/features/home/domain/entities/book_entity.dart';
 import 'package:bukki/features/home/presentation/manager/best_seller/best_seller_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'features/home/presentation/manager/books_banner/books_banner_cubit.dart';
 
-void main() {
+Future<void> main() async {
   setupServiceLocator();
   runApp(const Bukki());
+  Hive.registerAdapter(BookEntityAdapter());
+  await Hive.openBox(kFeaturedBox);
 }
 
 class Bukki extends StatelessWidget {
