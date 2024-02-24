@@ -1,3 +1,5 @@
+import 'package:bukki/core/constants/constants.dart';
+import 'package:bukki/core/functions/save_books.dart';
 import 'package:bukki/core/utils/api_service.dart';
 import 'package:bukki/features/home/data/models/book_model.dart';
 import 'package:bukki/features/home/domain/entities/book_entity.dart';
@@ -17,6 +19,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         endPoint:
             'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest');
     List<BookEntity> books = getBooksList(data);
+    saveData(books, kBestBox);
     return books;
   }
 
@@ -25,6 +28,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     var data = await apiService.get(
         endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
     List<BookEntity> books = getBooksList(data);
+    saveData(books, kFeaturedBox);
     return books;
   }
 

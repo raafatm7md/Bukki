@@ -7,13 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'features/home/presentation/manager/books_banner/books_banner_cubit.dart';
 
 Future<void> main() async {
   setupServiceLocator();
-  runApp(const Bukki());
+  await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kBestBox);
+  runApp(const Bukki());
 }
 
 class Bukki extends StatelessWidget {
