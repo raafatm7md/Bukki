@@ -1,5 +1,6 @@
 import 'package:bukki/features/home/data/models/book_model.dart';
 import 'package:bukki/features/home/data/repos/home_repo.dart';
+import 'package:bukki/features/home/domain/entities/book_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 

@@ -1,7 +1,10 @@
 import 'package:bukki/core/constants/constants.dart';
 import 'package:bukki/core/router/app_router.dart';
 import 'package:bukki/core/utils/service_locator.dart';
+import 'package:bukki/features/home/data/repos/home_repo_impl.dart';
 import 'package:bukki/features/home/domain/entities/book_entity.dart';
+import 'package:bukki/features/home/domain/use_cases/fetch_best_books_use_case.dart';
+import 'package:bukki/features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:bukki/features/home/presentation/manager/best_seller/best_seller_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,10 +30,12 @@ class Bukki extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => BooksBannerCubit(getIt.get<HomeRepoImpl>())
+            create: (context) => BooksBannerCubit(
+                FetchFeaturedBooksUseCase(getIt.get<HomeRepoImpl>()))
               ..fetchFeaturedBooks()),
         BlocProvider(
-            create: (context) => BestSellerBooksCubit(getIt.get<HomeRepoImpl>())
+            create: (context) => BestSellerBooksCubit(
+                FetchBestBooksUseCase(getIt.get<HomeRepoImpl>()))
               ..fetchBestSellerBooks()),
       ],
       child: MaterialApp.router(

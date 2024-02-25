@@ -8,7 +8,7 @@ class BooksBannerInitial extends BooksBannerState {}
 class BooksBannerLoading extends BooksBannerState {}
 
 class BooksBannerSuccess extends BooksBannerState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   BooksBannerSuccess(this.books);
 }
 

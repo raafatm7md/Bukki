@@ -8,7 +8,7 @@ class BestSellerBooksInitial extends BestSellerBooksState {}
 class BestSellerLoading extends BestSellerBooksState {}
 
 class BestSellerSuccess extends BestSellerBooksState {
-  final List<BookModel> books;
+  final List<BookEntity> books;
   BestSellerSuccess(this.books);
 }
 

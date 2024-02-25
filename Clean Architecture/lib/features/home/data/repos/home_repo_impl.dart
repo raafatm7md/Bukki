@@ -4,6 +4,7 @@ import 'package:bukki/features/home/data/data_sources/home_remote_data_source.da
 import 'package:bukki/features/home/domain/entities/book_entity.dart';
 import 'package:bukki/features/home/domain/repos/home_repo.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
   final HomeRemoteDataSource homeRemoteDataSource;
@@ -22,6 +23,7 @@ class HomeRepoImpl extends HomeRepo {
       books = await homeRemoteDataSource.fetchBestNewestBooks();
       return right(books);
     } on Exception catch (e) {
+      if (e is DioException) return left(ServerFailure.fromDioException(e));
       return left(ServerFailure(e.toString()));
     }
   }
@@ -37,6 +39,7 @@ class HomeRepoImpl extends HomeRepo {
       books = await homeRemoteDataSource.fetchFeaturedBooks();
       return right(books);
     } on Exception catch (e) {
+      if (e is DioException) return left(ServerFailure.fromDioException(e));
       return left(ServerFailure(e.toString()));
     }
   }
