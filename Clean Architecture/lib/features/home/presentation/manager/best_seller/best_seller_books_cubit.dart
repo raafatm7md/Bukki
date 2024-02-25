@@ -11,9 +11,9 @@ class BestSellerBooksCubit extends Cubit<BestSellerBooksState> {
 
   final FetchBestBooksUseCase fetchBestBooksUseCase;
 
-  Future<void> fetchBestSellerBooks() async {
+  Future<void> fetchBestSellerBooks({int pageNumber = 0}) async {
     emit(BestSellerLoading());
-    var result = await fetchBestBooksUseCase.call();
+    var result = await fetchBestBooksUseCase.call(pageNumber);
     result.fold((failure) => emit(BestSellerFailure(failure.errMessage)),
         (books) => emit(BestSellerSuccess(books)));
   }

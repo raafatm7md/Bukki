@@ -28,8 +28,7 @@ class ListViewBuilder extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsetsDirectional.only(end: 10.0),
                       child: BooksBanner(
-                          imgUrl: state.books[index].volumeInfo?.imageLinks
-                                  ?.thumbnail ??
+                          imgUrl: state.books[index].image ??
                               'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
                     ),
                   ),

@@ -1,12 +1,12 @@
 import 'package:bukki/core/router/app_router.dart';
-import 'package:bukki/features/home/data/models/book_model.dart';
+import 'package:bukki/features/home/domain/entities/book_entity.dart';
 import 'package:bukki/features/home/presentation/views/widgets/books_banner.dart';
 import 'package:flutter/material.dart';
 import 'package:bukki/core/constants/styles.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  final BookModel book;
+  final BookEntity book;
   const BestSellerItem({super.key, required this.book});
 
   @override
@@ -20,7 +20,7 @@ class BestSellerItem extends StatelessWidget {
         child: Row(
           children: [
             BooksBanner(
-                imgUrl: book.volumeInfo?.imageLinks?.thumbnail ??
+                imgUrl: book.image ??
                     'https://edit.org/images/cat/book-covers-big-2019101610.jpg'),
             const SizedBox(width: 20.0),
             Expanded(
@@ -28,13 +28,13 @@ class BestSellerItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    book.volumeInfo?.title ?? 'Book title',
+                    book.title,
                     style: Styles.title.copyWith(fontWeight: FontWeight.normal),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 3.0),
-                  Text(book.volumeInfo?.authors?[0] ?? 'Author',
+                  Text(book.authorName ?? 'Author',
                       style: const TextStyle(fontSize: 14.0)),
                   const SizedBox(height: 15.0),
                   const Row(

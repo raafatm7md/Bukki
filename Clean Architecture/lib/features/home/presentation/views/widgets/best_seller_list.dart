@@ -1,7 +1,6 @@
 import 'package:bukki/core/widgets/custom_error_widget.dart';
 import 'package:bukki/core/widgets/custom_loading_indicator.dart';
 import 'package:bukki/features/home/presentation/manager/best_seller/best_seller_books_cubit.dart';
-import 'package:bukki/features/home/presentation/manager/best_seller/best_seller_books_cubit.dart';
 import 'package:bukki/features/home/presentation/views/widgets/best_seller_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

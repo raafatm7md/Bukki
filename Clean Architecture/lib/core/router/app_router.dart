@@ -1,7 +1,6 @@
 import 'package:bukki/core/utils/service_locator.dart';
 import 'package:bukki/features/home/data/models/book_model.dart';
 import 'package:bukki/features/home/data/repos/home_repo_impl.dart';
-import 'package:bukki/features/home/presentation/manager/similar_books/similar_books_cubit.dart';
 import 'package:bukki/features/home/presentation/views/book_details.dart';
 import 'package:bukki/features/home/presentation/views/home_screen.dart';
 import 'package:bukki/features/search/presentation/views/search_screen.dart';
@@ -24,9 +23,7 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kBookDetailsPath,
-      builder: (context, state) => BlocProvider(
-          create: (context) => SimilarBooksCubit(getIt.get<HomeRepoImpl>()),
-          child: BookDetails(book: state.extra as BookModel,)),
+      builder: (context, state) => BookDetails(book: state.extra as BookModel),
     ),
     GoRoute(
       path: kSearchPath,
