@@ -20,7 +20,7 @@ class ServerFailure extends Failure {
         return ServerFailure('Bad Certificate');
       case DioExceptionType.badResponse:
         return ServerFailure.fromBadResponse(
-            dioException.response!.statusCode!, dioException.response!.data);
+            dioException.response!.statusCode, dioException.response!.data);
       case DioExceptionType.cancel:
         return ServerFailure('Request Was Canceled');
       case DioExceptionType.connectionError:
@@ -30,7 +30,7 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromBadResponse(int statusCode, dynamic response) {
+  factory ServerFailure.fromBadResponse(int? statusCode, dynamic response) {
     if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
       return ServerFailure(response['error']['message']);
     } else if (statusCode == 404) {
@@ -38,7 +38,7 @@ class ServerFailure extends Failure {
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server Error, Please Try Later!');
     } else {
-      return ServerFailure('Unknown Error, Please Try Later!');
+      return ServerFailure('Error, Please Try Later!');
     }
   }
 }
