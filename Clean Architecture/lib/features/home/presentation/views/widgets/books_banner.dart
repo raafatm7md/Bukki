@@ -16,8 +16,10 @@ class BooksBanner extends StatelessWidget {
           imageUrl: imgUrl,
           fit: BoxFit.fill,
           placeholder: (context, url) => const CustomLoadingIndicator(),
-          errorWidget: (context, url, error) =>
-              const Icon(Icons.error_outline),
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error_outline,
+            size: 40.0,
+          ),
         ),
       ),
     );

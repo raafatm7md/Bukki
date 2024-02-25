@@ -6,7 +6,7 @@ import 'package:bukki/features/home/domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchBestNewestBooks();
-  Future<List<BookEntity>> fetchFeaturedBooks();
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0});
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -14,19 +14,20 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<List<BookEntity>> fetchBestNewestBooks({int pageNumber = 0}) async {
+  Future<List<BookEntity>> fetchBestNewestBooks() async {
     var data = await apiService.get(
         endPoint:
-            'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest&startIndex=${pageNumber * 10}');
+            'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest');
     List<BookEntity> books = getBooksList(data);
     saveData(books, kBestBox);
     return books;
   }
 
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks() async {
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
     var data = await apiService.get(
-        endPoint: 'volumes?Filtering=free-ebooks&q=subject:programming');
+        endPoint:
+            'volumes?Filtering=free-ebooks&q=subject:programming&startIndex=${pageNumber * 10}');
     List<BookEntity> books = getBooksList(data);
     saveData(books, kFeaturedBox);
     return books;

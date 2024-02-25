@@ -1,10 +1,10 @@
 import 'package:bukki/core/utils/functions/launch_url.dart';
 import 'package:bukki/core/widgets/custom_button.dart';
-import 'package:bukki/features/home/data/models/book_model.dart';
+import 'package:bukki/features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 class BooksAction extends StatelessWidget {
-  final BookModel book;
+  final BookEntity book;
   const BooksAction({super.key, required this.book});
 
   @override
@@ -25,7 +25,7 @@ class BooksAction extends StatelessWidget {
           Expanded(
               child: CustomButton(
             onPressed: () {
-              launchCustomUrl(context, book.volumeInfo!.previewLink!);
+              launchCustomUrl(context, 'book.volumeInfo!.previewLink!');
             },
             text: getText(book),
             bgColor: const Color(0xFFEF8262),
@@ -40,7 +40,7 @@ class BooksAction extends StatelessWidget {
   }
 }
 
-String getText(BookModel book) {
-  if (book.volumeInfo?.previewLink == null) return 'Not Available';
+String getText(BookEntity book) {
+  if ('book.volumeInfo?.previewLink' == null) return 'Not Available';
   return 'Preview';
 }

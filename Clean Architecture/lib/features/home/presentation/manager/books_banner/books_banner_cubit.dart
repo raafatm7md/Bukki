@@ -10,10 +10,19 @@ class BooksBannerCubit extends Cubit<BooksBannerState> {
 
   final FetchFeaturedBooksUseCase featuredBooksUseCase;
 
-  Future<void> fetchFeaturedBooks() async {
-    emit(BooksBannerLoading());
-    var result = await featuredBooksUseCase.call();
-    result.fold((failure) => emit(BooksBannerFailure(failure.errMessage)),
-        (books) => emit(BooksBannerSuccess(books)));
+  Future<void> fetchFeaturedBooks({int pageNumber = 0}) async {
+    if (pageNumber == 0) {
+      emit(BooksBannerLoading());
+    } else {
+      emit(BooksBannerPaginationLoading());
+    }
+    var result = await featuredBooksUseCase.call(pageNumber);
+    result.fold((failure) {
+      if (pageNumber == 0) {
+        emit(BooksBannerFailure(failure.errMessage));
+      } else {
+        emit(BooksBannerPaginationFailure(failure.errMessage));
+      }
+    }, (books) => emit(BooksBannerSuccess(books)));
   }
 }

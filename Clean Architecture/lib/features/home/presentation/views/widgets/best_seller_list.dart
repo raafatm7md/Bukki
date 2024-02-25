@@ -18,7 +18,9 @@ class BestSellerList extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
-                  child: BestSellerItem(book: state.books[index],),
+                  child: BestSellerItem(
+                    book: state.books[index],
+                  ),
                 ),
                 itemCount: state.books.length,
               )
